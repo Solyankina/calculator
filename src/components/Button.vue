@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!notShow">
     <button class="keyboard__button" type="button"  @click="click()">{{title}}</button>
   </div>
 </template>
@@ -7,25 +7,19 @@
 <script>
 export default {
   name: "Button",
-  props: ['type', 'value', 'title'],
+  props: ['type', 'value', 'title', 'notShow'],
   methods: {
     click() {
       console.log(`Button ${this.title} was clicked (type: ${this.type}, value: ${this.value})`)
       switch(this.type) {
         case 'operand':
           this.$parent.appendOperand(this.value);
-          break
+          break;
         case 'operator':
-          this.$parent.appendOperator(this.value);
-          break
-        case 'clear':
-          this.$parent.clear();
-          break
-        case 'result':
-          this.$parent.eval();
-          break
+          this.$parent.appendOperator(this.value, this.title);
+          break;
         default:
-          throw `Unknown button type '${this.type}', choose one of [operand, operator, result]`
+          throw `Unknown button type '${this.type}', choose one of [operand, operator, result]`;
       }
     }
   }
