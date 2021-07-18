@@ -1,6 +1,6 @@
 <template>
   <div v-if="!notShow">
-    <button class="keyboard__button" type="button"  @click="click()">{{title}}</button>
+    <button :id="'button_' + value" class="keyboard__button" type="button"  @click="click()">{{title}}</button>
   </div>
 </template>
 

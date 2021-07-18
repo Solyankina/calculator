@@ -26,10 +26,10 @@
     <div v-if="!showKeyboard">
       <div>
         <br>
-        <input type="text" v-model="operand1">
+        <input type="text" v-model="operand1" id="operand_1__input">
         <div>{{ operatorTitle }}</div>
         <br>
-        <input type="text" v-model="operand2">
+        <input type="text" v-model="operand2" id="operand_2__input">
         <div v-if="operand1 && operand2">={{ this.calc() }}</div>
         <br>
         <input type="radio" id="operand_1_radio" value="operand_1" v-model="pickedOperand">
@@ -126,7 +126,6 @@ export default {
         }
         return;
       }
-      console.log('++++++++++++++++++++++++')
       if (this.operator) {
         this.operand2 = this.operandValue(this.operand2, value);
       } else {
